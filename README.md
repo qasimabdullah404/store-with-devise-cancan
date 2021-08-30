@@ -1,24 +1,6 @@
-# README
+# Online Store
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### Learning Authentication and Authorization with [devise](https://github.com/heartcombo/devise "devise") and [cancan](https://github.com/CanCanCommunity/cancancan "cancan").
 
-Things you may want to cover:
+> Ruby Version: 2.7.4
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
