@@ -32,10 +32,15 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+    if user_params[:password].blank?
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
+    end
+
+    successfully_updated = if needs_password?(@user, user_params)
+      @user.update(user_params)
     else
-      render :edit
+      @user.update_without_password(user_params)
     end
   end
 
@@ -53,6 +58,10 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :role_id)
+      params.require(:user).permit(:name, :role_id, :email, :password, :password_confirmation)
+    end
+
+    def needs_password?(_user, params)
+      params[:password].present?
     end
 end
